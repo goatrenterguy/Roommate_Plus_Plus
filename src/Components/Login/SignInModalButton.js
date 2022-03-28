@@ -1,4 +1,4 @@
-import SignInModal from "./SignInModal";
+import SignInSignUpModal from "./SignInSignUpModal";
 import React from 'react';
 
 class SignInModalButton extends React.Component {
@@ -7,6 +7,7 @@ class SignInModalButton extends React.Component {
         this.state = {
             displayModal: false
         }
+        this.handleClick = this.handleClick.bind(this);
     }
     handleClick() {
         this.setState({displayModal: !this.state.displayModal})
@@ -14,8 +15,8 @@ class SignInModalButton extends React.Component {
     render() {
         return (
             <div className="ms-auto">
-                <button className="btn btn-primary" onClick={() => this.handleClick()}>Sign In</button>
-                <SignInModal displayModal={this.state.displayModal} handleClick={() => this.handleClick()}/>
+                <button className="btn btn-primary" onClick={this.handleClick}>Sign In</button>
+                <SignInSignUpModal displayModal={this.state.displayModal} handleClick={this.handleClick}/>
             </div>
         );
     }
