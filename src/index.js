@@ -7,11 +7,18 @@ import reportWebVitals from './reportWebVitals';
 import Amplify from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
+import {BrowserRouter, Routes, Route,} from "react-router-dom";
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="page_1" element={<p>page 1</p>} />
+              <Route path="page_2" element={<p>page 2</p>} />
+          </Routes>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

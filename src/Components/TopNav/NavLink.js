@@ -1,7 +1,8 @@
+import {Link} from "react-router-dom";
 function NavLink(props) {
     return (
         <li className="nav-item">
-            <a className="nav-link" href={props.href}>{props.text}</a>
+            <Link className="nav-link" to={props.href}>{props.text}</Link>
         </li>
     );
 }

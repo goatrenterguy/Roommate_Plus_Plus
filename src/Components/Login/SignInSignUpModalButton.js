@@ -1,7 +1,7 @@
 import SignInSignUpModal from "./SignInSignUpModal";
 import React from 'react';
 
-class SignInModalButton extends React.Component {
+class SignInSignUpModalButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,4 +22,4 @@ class SignInModalButton extends React.Component {
     }
 }
 
-export default SignInModalButton;
+export default SignInSignUpModalButton;

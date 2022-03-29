@@ -12,7 +12,7 @@ class SignOutButton extends React.Component {
 
     render() {
         return (
-            <button className="btn" onClick={this.signOut}>Sign Out</button>
+            <button className="btn secondary" onClick={this.signOut}>Sign Out</button>
         );
     }
 }
