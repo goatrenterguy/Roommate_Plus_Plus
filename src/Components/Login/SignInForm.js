@@ -34,9 +34,9 @@ class SignInForm extends React.Component {
     render() {
         return (
             <form className="LoginForm" onSubmit={this.handleSubmit}>
-                <label className="form-label" for="loginUsernameField">Username:</label>
+                <label className="form-label" htmlFor="loginUsernameField">Username:</label>
                 <input id="loginUsernameField" className="form-control" type="text" value={this.state.username} name="username" onChange={this.handleChangeUsername} />
-                <label className="form-label mt-3" for="loginPasswordField" >Password:</label>
+                <label className="form-label mt-3" htmlFor="loginPasswordField" >Password:</label>
                 <input id="loginPasswordField" className="form-control" type="password" value={this.state.password} name="password" onChange={this.handleChangePassword} />
                 <div><a className="small" href="/forgot-password">Forgot Password</a></div>
                 <input className="btn btn-primary mt-3" type="submit" value="Submit" />

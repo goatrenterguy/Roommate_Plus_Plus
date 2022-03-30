@@ -1,10 +1,10 @@
 import '../../App.css';
-import Logo from '../../logo.svg';
 import './PrimaryTopNav.css';
 import NavLinkBar from './NavLinkBar';
 import IsUserSignedIn from "../Login/IsUserSignedIn";
 import SignOutButton from '../Login/SignOutButton'
 import React from 'react';
+import {Link} from "react-router-dom";
 import SignInSignUpModalButton from '../Login/SignInSignUpModalButton';
 
 class PrimaryTopNav extends React.Component {
@@ -12,9 +12,9 @@ class PrimaryTopNav extends React.Component {
         return (
             <nav className="navbar navbar-expand-sm bg-light navbar-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">
-                        <img src={Logo} className="navbar-brand-logo" alt="Logo"/>
-                    </a>
+                    <Link className="navbar-brand" to="/">
+                        <img src="/Images/Logo.png" className="navbar-brand-logo" alt="Logo"/>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapsibleNavbar">
                         <span className="navbar-toggler-icon"/>
