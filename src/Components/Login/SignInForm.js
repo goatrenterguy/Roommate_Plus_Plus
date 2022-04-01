@@ -1,5 +1,6 @@
 import React from 'react'
 import { Auth } from 'aws-amplify'
+import {Link} from "react-router-dom";
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +11,6 @@ class SignInForm extends React.Component {
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     handleChangeUsername(event) {
@@ -34,12 +34,15 @@ class SignInForm extends React.Component {
     render() {
         return (
             <form className="LoginForm" onSubmit={this.handleSubmit}>
-                <label className="form-label" htmlFor="loginUsernameField">Username:</label>
+                <label className="form-label" htmlFor="loginUsernameField">Email:</label>
                 <input id="loginUsernameField" className="form-control" type="text" value={this.state.username} name="username" onChange={this.handleChangeUsername} />
                 <label className="form-label mt-3" htmlFor="loginPasswordField" >Password:</label>
                 <input id="loginPasswordField" className="form-control" type="password" value={this.state.password} name="password" onChange={this.handleChangePassword} />
-                <div><a className="small" href="/forgot-password">Forgot Password</a></div>
-                <input className="btn btn-primary mt-3" type="submit" value="Submit" />
+                <div><Link className="small" to="/forgot-password">Forgot Password</Link></div>
+                <div className="d-grid g-2 gap-2 d-md-block mt-3">
+                    <button className="btn btn-primary me-md-1" type="submit" >Login</button>
+                    <button className="btn btn-secondary" type="button" onClick={() => this.props.handleFormChange()}>Sign Up</button>
+                </div>
             </form>
         );
     }

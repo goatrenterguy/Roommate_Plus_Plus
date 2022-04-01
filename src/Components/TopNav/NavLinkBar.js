@@ -12,8 +12,10 @@ class NavLinkBar extends React.Component{
 
     getLinks() {
         let navLinkDoms = [];
+        let linkId = 0;
         function getLinkDoms(value) {
-            navLinkDoms.push(<NavLink text={value.text} href={value.href}/>);
+            navLinkDoms.push(<NavLink key={"navLink" + linkId} text={value.text} href={value.href}/>);
+            linkId++;
         }
         this.state.links.forEach(getLinkDoms);
         return navLinkDoms;

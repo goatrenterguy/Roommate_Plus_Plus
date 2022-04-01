@@ -16,7 +16,7 @@ class SignInSignUpModalButton extends React.Component {
         return (
             <div className="ms-auto">
                 <button className="btn btn-primary" onClick={this.handleClick}>Sign In</button>
-                <SignInSignUpModal displayModal={this.state.displayModal} handleClick={this.handleClick}/>
+                <SignInSignUpModal signIn displayModal={this.state.displayModal} handleClick={this.handleClick}/>
             </div>
         );
     }
