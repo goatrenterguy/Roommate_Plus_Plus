@@ -1,12 +1,16 @@
 import React from 'react'
 import { Auth } from 'aws-amplify'
 import FormErrorMsg from "./FormErrorMsg";
+import LoadingSpinner from "../Utilities/LoadingSpinner";
+import ConfirmSignUpForm from "./ConfirmSignUpForm";
 
 // TODO: Form validation
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoading : false,
+            confirmSignUp : false,
             username : '',
             password : '',
             cPassword : '',
@@ -25,21 +29,8 @@ class SignUpForm extends React.Component {
         this.handleChangeLastName = this.handleChangeLastName.bind(this);
         this.handleChangeConfirmPassword = this.handleChangeConfirmPassword.bind(this);
         this.confirmPasswordsMatch = this.confirmPasswordsMatch.bind(this);
-        this.debounce = this.debounce.bind(this);
-    }
-
-    useE
-
-    debounce(func, delay = 500) {
-        let debounceTimer;
-        console.log("Confirming passwords");
-        return function () {
-            const context = this;
-            const args = arguments;
-            clearTimeout(debounceTimer);
-            debounceTimer =
-                setTimeout(() => func.apply(context, args), delay);
-        }
+        this.loadingDom = this.loadingDom.bind(this);
+        this.confirmSignUpDom = this.confirmSignUpDom.bind(this);
     }
 
     handleChangeUsername(event) {
@@ -76,6 +67,7 @@ class SignUpForm extends React.Component {
 
     async signUp(event) {
         event.preventDefault();
+        this.setState({loading: true});
         try {
             const { user } = await Auth.signUp({
                 username: this.state.username,
@@ -84,15 +76,27 @@ class SignUpForm extends React.Component {
                     given_name: this.state.firstName,
                     family_name: this.state.family_name
                 }});
+            this.setState({loading: false, confirmSignUp: true});
             console.log(user);
         } catch (error) {
+            this.setState({loading: false});
+            this.props.handleErrorMsg(error.message);
             console.log('error signing up:', error);
         }
     }
 
-    render() {
+    loadingDom() {
+        return (<LoadingSpinner/>);
+    }
+
+    confirmSignUpDom() {
         return (
-            <form className="SignUpForm" onSubmit={this.signUp}>
+            <ConfirmSignUpForm handleFormChange={this.props.handleFormChange} username={this.state.username} handleErrorMsg={this.props.handleErrorMsg}/>
+        );
+    }
+
+    signUpFormDom() {
+        return (<form className="SignUpForm" onSubmit={this.signUp}>
                 <label className="form-label" htmlFor="signUpUsernameField">Email:</label>
                 <input id="signUpUsernameField" className="form-control" type="text" value={this.state.username} name="username" onChange={this.handleChangeUsername} />
                 <div className="invalid-feedback d-none">
@@ -126,6 +130,18 @@ class SignUpForm extends React.Component {
             </form>
         );
     }
+
+    render() {
+        if (this.state.loading) {
+            return(this.loadingDom());
+        }  else if (this.state.confirmSignUp) {
+            return (this.confirmSignUpDom());
+        } else {
+            return (this.signUpFormDom());
+        }
+    }
+
+
 
 
 
