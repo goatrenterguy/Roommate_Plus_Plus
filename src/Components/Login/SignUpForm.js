@@ -86,7 +86,7 @@ class SignUpForm extends React.Component {
     }
 
     loadingDom() {
-        return (<LoadingSpinner/>);
+        return (<LoadingSpinner text={"Signing up..."}/>);
     }
 
     confirmSignUpDom() {
@@ -140,11 +140,6 @@ class SignUpForm extends React.Component {
             return (this.signUpFormDom());
         }
     }
-
-
-
-
-
 }
 
 export default SignUpForm;

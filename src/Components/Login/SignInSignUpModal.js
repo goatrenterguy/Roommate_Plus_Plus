@@ -35,7 +35,7 @@ class SignInSignUpModal extends React.Component {
             let title = '';
             let error = '';
             if (this.state.errorMsg !== undefined) {
-                error = <div>{this.state.errorMsg}</div>
+                error = <div className="alert alert-danger">{this.state.errorMsg}</div>
             }
             if (this.state.signInForm) {
                 form = <SignInForm handleFormChange={this.handleFormChange} handleErrorMsg={this.handleErrorMsg} />

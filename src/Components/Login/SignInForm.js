@@ -3,10 +3,13 @@ import { Auth } from 'aws-amplify'
 import {Link} from "react-router-dom";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import ConfirmSignUpForm from "./ConfirmSignUpForm";
+import {Navigate} from "react-router-dom";
+
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            navigate: undefined,
             confirmSignUp : false,
             isLoading : '',
             username : '',
@@ -56,9 +59,11 @@ class SignInForm extends React.Component {
 
     render() {
         if (this.state.isLoading) {
-            return (<LoadingSpinner/>);
+            return (<LoadingSpinner text={"Signing in..."}/>);
         } else if (this.state.confirmSignUp) {
             return (<ConfirmSignUpForm handleFormChange={this.props.handleFormChange} username={this.state.username} handleErrorMsg={this.props.handleErrorMsg}/>);
+        } else if (this.state.navigate) {
+            return (<Navigate to={"/"} replace={true}/>);
         } else {
             return (
                 <form className="LoginForm" onSubmit={this.handleSubmit}>

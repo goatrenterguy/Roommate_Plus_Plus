@@ -1,6 +1,6 @@
 import NavLink from './NavLink'
 import React from 'react'
-import getNavLinks from "../DataObjects/getNavLinks";
+import getNavLinks from "../DataObjects/getNavLinkData";
 class NavLinkBar extends React.Component{
     constructor(props) {
         super(props);
