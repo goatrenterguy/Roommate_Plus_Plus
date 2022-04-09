@@ -74,7 +74,8 @@ class SignUpForm extends React.Component {
                 password: this.state.password,
                 attributes: {
                     given_name: this.state.firstName,
-                    family_name: this.state.family_name
+                    family_name: this.state.lastName,
+                    name: this.state.firstName + this.state.lastName
                 }});
             this.setState({loading: false, confirmSignUp: true});
             console.log(user);
