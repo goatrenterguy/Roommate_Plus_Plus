@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import SignUpForm from "../Components/Login/SignUpForm";
+import SignUpForm from "../Components/Login/Forms/SignUpForm";
 
 function SignUpPage(props) {
     const [errorMsg, setErrorMsg] = useState(undefined);

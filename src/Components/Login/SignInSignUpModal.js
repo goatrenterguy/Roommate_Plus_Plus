@@ -1,6 +1,6 @@
 import React from 'react';
-import SignInForm from './SignInForm'
-import SignUpForm from "./SignUpForm";
+import SignInForm from './Forms/SignInForm'
+import SignUpForm from "./Forms/SignUpForm";
 
 class SignInSignUpModal extends React.Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Auth} from "aws-amplify";
-import LoadingSpinner from "../Utilities/LoadingSpinner";
+import LoadingSpinner from "../../Utilities/LoadingSpinner";
 
 class ConfirmSignUpForm extends React.Component {
     constructor(props) {

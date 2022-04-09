@@ -10,7 +10,7 @@ import {Auth, Hub} from "aws-amplify";
 import {userContext} from "./Contexts/userContext";
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(undefined);
 
     function loadRoutes() {
         let routeDoms = [];
@@ -43,9 +43,12 @@ function App() {
 
     async function checkUser() {
         Auth.currentAuthenticatedUser().then((user) => {
-            console.log(user);
             setUser(user);
-        }).catch(err => console.log(err));
+            console.log(user);
+        }).catch((err) => {
+            setUser(null);
+            console.log(err);
+        });
     }
 
     return (

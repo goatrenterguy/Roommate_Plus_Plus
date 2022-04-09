@@ -1,7 +1,7 @@
 import React from 'react'
 import { Auth } from 'aws-amplify'
 import {Link} from "react-router-dom";
-import LoadingSpinner from "../Utilities/LoadingSpinner";
+import LoadingSpinner from "../../Utilities/LoadingSpinner";
 import ConfirmSignUpForm from "./ConfirmSignUpForm";
 import {Navigate} from "react-router-dom";
 
@@ -67,6 +67,7 @@ class SignInForm extends React.Component {
         } else {
             return (
                 <form className="LoginForm" onSubmit={this.handleSubmit}>
+                    <div className=""></div>
                     <label className="form-label" htmlFor="loginUsernameField">Email:</label>
                     <input id="loginUsernameField" className="form-control" type="text" value={this.state.username}
                            name="username" onChange={this.handleChangeUsername}/>

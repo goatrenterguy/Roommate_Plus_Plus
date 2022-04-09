@@ -1,7 +1,7 @@
 import React from 'react'
 import { Auth } from 'aws-amplify'
-import FormErrorMsg from "./FormErrorMsg";
-import LoadingSpinner from "../Utilities/LoadingSpinner";
+import FormErrorMsg from "../FormErrorMsg";
+import LoadingSpinner from "../../Utilities/LoadingSpinner";
 import ConfirmSignUpForm from "./ConfirmSignUpForm";
 
 // TODO: Form validation
