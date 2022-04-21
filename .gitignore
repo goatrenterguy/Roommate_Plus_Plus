@@ -45,3 +45,5 @@ amplifytools.xcconfig
 /src/graphql/
 /amplify/backend/
 /amplify/
+/amplify/
+/amplify/
