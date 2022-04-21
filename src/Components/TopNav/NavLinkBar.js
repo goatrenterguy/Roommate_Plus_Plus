@@ -1,33 +1,28 @@
 import NavLink from './NavLink'
-import React from 'react'
+import React, {useState} from 'react'
 import getNavLinks from "../DataObjects/getNavLinkData";
-class NavLinkBar extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            'links': getNavLinks
-        };
-        this.getLinks = this.getLinks.bind(this);
-    }
+import {userContext} from "../../Contexts/userContext";
 
-    getLinks() {
+function NavLinkBar() {
+    const [links] = useState(getNavLinks);
+    const user = React.useContext(userContext);
+
+    function getLinks() {
         let navLinkDoms = [];
-        let linkId = 0;
-        function getLinkDoms(value) {
-            navLinkDoms.push(<NavLink key={"navLink" + linkId} text={value.text} href={value.href}/>);
-            linkId++;
+        function getLinkDoms(value, index) {
+            if ((value.loggedIn === true && user) || (value.loggedIn === false && !user) || (value.loggedIn === undefined)) {
+                navLinkDoms.push(<NavLink key={"navLink" + index} text={value.text} href={value.href}/>);
+            }
         }
-        this.state.links.forEach(getLinkDoms);
+        links.forEach(getLinkDoms);
         return navLinkDoms;
     }
 
-    render() {
-        return (
-            <ul className="navbar-nav">
-                {this.getLinks()}
-            </ul>
-        );
-    }
+    return (
+        <ul className="navbar-nav">
+            {getLinks()}
+        </ul>
+    );
 }
 
 export default NavLinkBar;

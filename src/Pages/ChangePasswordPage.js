@@ -1,17 +1,16 @@
 import React from "react";
 import { Navigate } from 'react-router-dom';
 import {userContext} from "../Contexts/userContext";
-import EditProfileForm from "../Components/Login/Forms/EditProfileForm";
+import ChangePasswordForm from "../Components/Login/Forms/ChangePasswordForm";
 
-function MyProfilePage() {
+function ChangePasswordPage() {
     const user = React.useContext(userContext);
 
     if (user) {
         return (
             <main>
                 <div className="container pt-3">
-                    <h1> Hi {user.attributes.given_name}, </h1>
-                    <EditProfileForm/>
+                    <ChangePasswordForm/>
                 </div>
             </main>
         );
@@ -22,4 +21,4 @@ function MyProfilePage() {
     }
 }
 
-export default MyProfilePage;
+export default ChangePasswordPage;
