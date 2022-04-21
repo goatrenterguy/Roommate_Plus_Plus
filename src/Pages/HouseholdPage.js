@@ -1,7 +1,7 @@
 import HouseholdList from "../Components/Household/HouseholdList";
 import CreateHousehold from "../Components/Household/CreateHousehold";
 
-function HouseHoldPage(){
+function HouseholdPage(){
     return (
         <div className="container">
             <CreateHousehold />
@@ -10,4 +10,4 @@ function HouseHoldPage(){
     );
 }
 
-export default HouseHoldPage;
+export default HouseholdPage;
