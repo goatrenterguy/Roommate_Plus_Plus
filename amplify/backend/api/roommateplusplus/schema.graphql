@@ -3,29 +3,26 @@ type User @model
 {
     id: ID!
     name: String!
-    householdRelationship: HouseholdRelationship @hasOne(fields: ["id"])
+    householdID: ID @index(name: "byHouseholdID", queryField: "userByHouseholdID")
 }
 
 type Household @model
-@auth(rules: [{ allow: public}, { allow: private}])
+@auth(rules: [{ allow: private }])
 {
     id: ID!
     name: String!
     description: String
-    householdRelationship: [HouseholdRelationship] @hasMany(indexName: "byHouseholdId", fields: ["id"])
+    householdMembers: [User] @hasMany(indexName: "byHouseholdID", fields: ["id"])
+    householdItems: [Item] @hasMany(indexName: "byHouseholdID", fields: ["id"])
 }
 
-type HouseholdRelationship
-@model(
-    mutations: {create: "createHouseholdRelationship", delete: "deleteHouseholdRelationship", update: null}
-)
-@auth(rules: [
-    { allow: public, operations: [read]}
-    { allow: owner }
-])
+type Item @model
+@auth(rules: [{ allow: private }])
 {
-    userId: ID! @primaryKey
-    householdId: ID! @index(name: "byHouseholdId", queryField: "householdRelationshipByHouseholdId")
-    user:  User! @hasOne(fields: ["userId"])
-    household: Household! @hasOne(fields: ["householdId"])
+    householdID: ID! @index(name: "byHouseholdID", queryField: "itemByHouseholdID")
+    ownerID: ID @index(name: "byOwnerID", queryField: "itemByOwnerID")
+    name: String!
+    description: String
+    usageStatus: String!
+    quantity: Int!
 }
