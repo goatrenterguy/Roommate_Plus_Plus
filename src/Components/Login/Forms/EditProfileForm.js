@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {userContext} from "../../../Contexts/userContext";
 import {Auth} from "aws-amplify";
 
-function EditProfileForm(props) {
+function EditProfileForm() {
     const { attributes} = React.useContext(userContext);
     const username = attributes.email;
     const [firstName, setFirstName] = useState(attributes.given_name ? attributes.given_name : "");
