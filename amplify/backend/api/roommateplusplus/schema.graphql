@@ -1,0 +1,31 @@
+type User @model
+@auth(rules: [{allow: private}])
+{
+    id: ID!
+    name: String!
+    householdRelationship: HouseholdRelationship @hasOne(fields: ["id"])
+}
+
+type Household @model
+@auth(rules: [{ allow: public}, { allow: private}])
+{
+    id: ID!
+    name: String!
+    description: String
+    householdRelationship: [HouseholdRelationship] @hasMany(indexName: "byHouseholdId", fields: ["id"])
+}
+
+type HouseholdRelationship
+@model(
+    mutations: {create: "createHouseholdRelationship", delete: "deleteHouseholdRelationship", update: null}
+)
+@auth(rules: [
+    { allow: public, operations: [read]}
+    { allow: owner }
+])
+{
+    userId: ID! @primaryKey
+    householdId: ID! @index(name: "byHouseholdId", queryField: "householdRelationshipByHouseholdId")
+    user:  User! @hasOne(fields: ["userId"])
+    household: Household! @hasOne(fields: ["householdId"])
+}

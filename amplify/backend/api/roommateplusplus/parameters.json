@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "roommateplusplus",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-04-13T00:12:34.964Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authroommateplusplusa8b7cbde",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
