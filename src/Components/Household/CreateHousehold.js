@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {API, graphqlOperation} from "aws-amplify";
+import {API} from "aws-amplify";
 import {createHousehold} from "../../graphql/mutations";
 
 function CreateHousehold() {
@@ -12,7 +12,11 @@ function CreateHousehold() {
             description: 'Test household'
         }
         try {
-            const newHousehold = await API.graphql(graphqlOperation(createHousehold, {input: household}));
+            const newHousehold = await API.graphql({
+                query: createHousehold,
+                variables: {input: household},
+                authMode: "AMAZON_COGNITO_USER_POOLS"
+            });
             console.log(newHousehold);
         } catch (error) {
             console.log(error);

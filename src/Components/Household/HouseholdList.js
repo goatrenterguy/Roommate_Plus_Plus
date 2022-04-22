@@ -1,4 +1,4 @@
-import {API, graphqlOperation} from "aws-amplify";
+import {API} from "aws-amplify";
 import {listHouseholds} from "../../graphql/queries";
 import {useEffect, useState} from "react";
 import HouseholdCard from "./HouseholdCard";
@@ -12,7 +12,12 @@ function HouseholdList() {
 
     async function fetchHouseholds() {
         try {
-            const householdsData = await API.graphql(graphqlOperation(listHouseholds));
+            const householdsData = await API.graphql(
+                {
+                    query: listHouseholds,
+                    variables: {items: "householdMembers"},
+                    authMode: "AMAZON_COGNITO_USER_POOLS"
+                });
             console.log(householdsData)
             setHouseholds(householdsData.data.listHouseholds.items);
         } catch (error) {
