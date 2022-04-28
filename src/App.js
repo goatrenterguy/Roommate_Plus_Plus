@@ -113,8 +113,8 @@ function App() {
         const userData = {
             id: user.username,
             name: user.attributes.name,
-            firstName: user.attributes.firstName,
-            lastName: user.attributes.lastName
+            firstName: user.attributes.given_name,
+            lastName: user.attributes.family_name
         }
         console.log("New user data", userData);
         try {
@@ -124,7 +124,7 @@ function App() {
                 authMode: "AMAZON_COGNITO_USER_POOLS"
             });
             console.log("New user", newUser);
-            return newUser(newUser.data.createUser);
+            return newUser.data.createUser;
         } catch (error) {
             console.log(error);
         }
