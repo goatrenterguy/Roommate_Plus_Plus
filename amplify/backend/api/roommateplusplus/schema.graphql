@@ -2,7 +2,9 @@ type User @model
 @auth(rules: [{allow: private}])
 {
     id: ID!
-    name: String!
+    name: String
+    firstName: String
+    lastName: String
     householdID: ID @index(name: "byHouseholdID", queryField: "userByHouseholdID")
     userItems: [Item] @hasMany(indexName: "byOwnerID", fields: ["id"])
 }

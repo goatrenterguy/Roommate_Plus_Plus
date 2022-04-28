@@ -1,11 +1,13 @@
-import HouseholdList from "../Components/Household/HouseholdList";
-import CreateHousehold from "../Components/Household/CreateHousehold";
 
 function HouseholdPage(){
     return (
         <div className="container">
-            <CreateHousehold />
-            <HouseholdList/>
+            <div className="row-cols-md-2" >
+                {/* Card for feed coming soon*/}
+                {/* Card for food */}
+                {/* Card for household members */}
+                {/* Card for household supplies */}
+            </div>
         </div>
     );
 }

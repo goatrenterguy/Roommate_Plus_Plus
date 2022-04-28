@@ -4,7 +4,7 @@ import {userContext} from "../Contexts/userContext";
 import ChangePasswordForm from "../Components/Login/Forms/ChangePasswordForm";
 
 function ChangePasswordPage() {
-    const user = React.useContext(userContext);
+    const user = React.useContext(userContext).user;
 
     if (user) {
         return (

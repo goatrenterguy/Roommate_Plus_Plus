@@ -5,7 +5,7 @@ import {userContext} from "../../Contexts/userContext";
 
 function NavLinkBar() {
     const [links] = useState(getNavLinks);
-    const user = React.useContext(userContext);
+    const user = React.useContext(userContext).user;
 
     function getLinks() {
         let navLinkDoms = [];

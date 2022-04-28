@@ -4,7 +4,7 @@ import {userContext} from "../Contexts/userContext";
 import EditProfileForm from "../Components/Login/Forms/EditProfileForm";
 
 function MyProfilePage() {
-    const user = React.useContext(userContext);
+    const user = React.useContext(userContext).user;
 
     if (user) {
         return (

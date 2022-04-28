@@ -8,7 +8,7 @@ import SignInSignUpModalButton from '../Login/SignInSignUpModalButton';
 import {userContext} from "../../Contexts/userContext";
 
 function PrimaryTopNav() {
-    const user = React.useContext(userContext);
+    const user = React.useContext(userContext).user;
     return (
         <nav className="navbar navbar-expand-sm bg-light navbar-light">
             <div className="container-fluid">

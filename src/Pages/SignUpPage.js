@@ -4,7 +4,7 @@ import SignUpForm from "../Components/Login/Forms/SignUpForm";
 import {userContext} from "../Contexts/userContext";
 
 function SignUpPage() {
-    const user = React.useContext(userContext);
+    const user = React.useContext(userContext).user.user;
     const [errorMsg, setErrorMsg] = useState(undefined);
     const navigate = useNavigate();
 

@@ -4,7 +4,7 @@ import {Auth} from "aws-amplify";
 import {Link} from "react-router-dom";
 
 function EditProfileForm() {
-    const { attributes } = React.useContext(userContext);
+    const { attributes } = React.useContext(userContext).user;
     const username = attributes.email;
     const [firstName, setFirstName] = useState(attributes.given_name ? attributes.given_name : "");
     const [lastName, setLastName] = useState(attributes.family_name ? attributes.family_name : "");

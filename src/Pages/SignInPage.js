@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import {userContext} from "../Contexts/userContext";
 
 function SignInPage() {
-    const user = React.useContext(userContext);
+    const user = React.useContext(userContext).user;
     const [errorMsg, setErrorMsg] = useState(undefined);
     const navigate = useNavigate();
 
