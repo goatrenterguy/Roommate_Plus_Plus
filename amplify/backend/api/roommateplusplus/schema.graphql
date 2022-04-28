@@ -1,5 +1,8 @@
 type User @model
-@auth(rules: [{allow: private}])
+@auth(rules: [
+{ allow: private, operations: [read] },
+{ allow: owner }
+])
 {
     id: ID!
     name: String
