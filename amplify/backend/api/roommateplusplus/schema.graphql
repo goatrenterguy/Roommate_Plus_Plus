@@ -1,7 +1,7 @@
 type User @model
 @auth(rules: [
 { allow: private, operations: [read] },
-{ allow: owner }
+{ allow: owner, ownerField: "id" }
 ])
 {
     id: ID!

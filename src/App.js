@@ -68,7 +68,7 @@ function App() {
             if (uData.data.getUser === null) {
                 uData = createUserData(user);
             }
-            setUserData(uData);
+            setUserData(uData.data.getUser);
             console.log(uData);
         } catch (error) {
             console.log(error);
